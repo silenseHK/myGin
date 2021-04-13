@@ -1,0 +1,100 @@
+{{define "public/layout.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Xenon Boostrap Admin Panel" />
+    <meta name="author" content="" />
+
+    <title>SILENCE</title>
+
+    <link rel="stylesheet" href="/asset/admin/assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/xenon-core.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/xenon-forms.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/xenon-components.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="/asset/admin/assets/css/custom.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <script src="/asset/admin/assets/js/jquery-1.11.1.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/asset/admin/assets/js/html5shiv.min.js"></script>
+    <script src="/asset/admin/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
+</head>
+<body class="page-body">
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+    <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+    <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+    <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+
+    {{template "public/menu" .}}
+
+    <div class="main-content">
+
+        <!-- User Info, Notifications and Menu Bar -->
+        {{template "public/header" .}}
+
+        {{block "content" .}}{{end}}
+
+        {{template "public/footer" .}}
+
+    </div>
+
+
+</div>
+
+
+<div class="page-loading-overlay">
+    <div class="loader-2"></div>
+</div>
+
+
+
+
+
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="/asset/admin/assets/js/devexpress-web-14.1/css/dx.common.css">
+<link rel="stylesheet" href="/asset/admin/assets/js/devexpress-web-14.1/css/dx.light.css">
+
+<!-- Bottom Scripts -->
+<script src="/asset/admin/assets/js/bootstrap.min.js"></script>
+<script src="/asset/admin/assets/js/TweenMax.min.js"></script>
+<script src="/asset/admin/assets/js/resizeable.js"></script>
+<script src="/asset/admin/assets/js/joinable.js"></script>
+<script src="/asset/admin/assets/js/xenon-api.js"></script>
+<script src="/asset/admin/assets/js/xenon-toggles.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="/asset/admin/assets/js/xenon-widgets.js"></script>
+<script src="/asset/admin/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/asset/admin/assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/asset/admin/assets/js/jvectormap/regions/jquery-jvectormap-it-mill-en.js"></script>
+<script src="/asset/admin/assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+<script src="/asset/admin/assets/js/devexpress-web-14.1/js/dx.webappjs.js"></script>
+<script src="/asset/admin/assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/asset/admin/assets/js/xenon-custom.js"></script>
+
+</body>
+
+{{block "script" .}}{{end}}
+
+</html>
+{{end}}

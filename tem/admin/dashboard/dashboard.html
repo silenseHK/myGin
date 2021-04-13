@@ -1,0 +1,24 @@
+{{define "dashboard/dashboard.html"}}
+    {{template "public/layout.html" .}}
+{{end}}
+
+{{define "content"}}
+
+<div id="content">
+    <el-button type="success">成功按钮12312312</el-button>
+</div>
+
+{{end}}
+
+{{define "script"}}
+
+<script>
+    new Vue({
+        el: '#content',
+        data: function() {
+            return { visible: false }
+        }
+    })
+</script>
+
+{{end}}
