@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"silence/models"
+	_ "silence/models"
 	_ "silence/routes"
 )
 
 func main(){
-	fmt.Println("start")
+	defer models.DB.Close()
 }

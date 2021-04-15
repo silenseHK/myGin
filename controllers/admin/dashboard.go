@@ -1,8 +1,8 @@
 package admin
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 type Dashboard struct{
@@ -10,5 +10,12 @@ type Dashboard struct{
 }
 
 func (this Dashboard)Index(c *gin.Context){
-	c.HTML(http.StatusOK,"dashboard/dashboard.html","")
+	defer func(){
+		err := recover()
+		fmt.Println("err: ",err)
+	}()
+	err := this.HtmlExec(c.Writer,"dashboard/dashboard.html","dashboard.html")
+	if err != nil{
+		panic(err)
+	}
 }

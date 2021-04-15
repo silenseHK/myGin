@@ -1,77 +1,92 @@
-{{define "admin/account.html"}}
 
-{{template "public/layout.html" .}}
+<< template "layout.html" . >>
 
-{{end}}
-
-{{define "content"}}
+<< define "content" >>
 
 <div id="content">
-    <template>
-        <el-table
-                :data="tableData"
-                height="250"
-                border
-                style="width: 100%">
-            <el-table-column
-                    prop="date"
-                    label="日期"
-                    width="180">
-            </el-table-column>
-            <el-table-column
-                    prop="name"
-                    label="姓名"
-                    width="180">
-            </el-table-column>
-            <el-table-column
-                    prop="address"
-                    label="地址">
-            </el-table-column>
-        </el-table>
-    </template>
+    <el-container>
+        <el-header>
+            <el-row :gutter="20">
+                <el-col>
+                    <el-button type="primary" plain @click="showAdd">新增管理员</el-button>
+                </el-col>
+            </el-row>
+        </el-header>
+        <el-main>
+            <el-table
+                    :data="tableData"
+                    height="250"
+                    border
+                    style="width: 100%">
+                <el-table-column
+                        prop="date"
+                        label="日期"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="姓名"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="地址">
+                </el-table-column>
+            </el-table>
+        </el-main>
+    </el-container>
+
+    <el-dialog title="增加" :visible.sync="addDisplay1" :modal="false">
+        <el-form :model="addForm">
+            <el-form-item label="账号" :label-width="formLabelWidth">
+                <el-input v-model="addForm.account" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" :label-width="formLabelWidth">
+                <el-input type="password" v-model="addForm.password" autocomplete="off" show-password clearable></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="addDisplay1 = false">取 消</el-button>
+            <el-button type="primary" @click="doAdd">确 定</el-button>
+        </div>
+    </el-dialog>
 </div>
 
-{{end}}
+<< end >>
 
-{{define "script"}}
+<< define "script" >>
 
 <script>
     new Vue({
         el: '#content',
         data: function() {
             return {
+                formLabelWidth: "100px",
+                addForm: {
+                    account: '',
+                    password: ''
+                },
                 tableData: [{
                     date: '2016-05-03',
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }]
+                }],
+                addDisplay1: false,
             }
-        }
+        },
+        methods:{
+            showAdd(){
+                this.addDisplay1 = true
+            },
+            doAdd(){
+                let {account, password} = this.addForm
+                console.log(account,password)
+                $.post("/admin/admin/account",{account, password}, (res)=>{
+                    this.$message.warning(res.msg)
+                }, 'json')
+            },
+        },
     })
 </script>
 
-{{end}}
+<< end >>

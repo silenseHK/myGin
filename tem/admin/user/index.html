@@ -1,0 +1,26 @@
+{{define "user/index"}}
+
+{{template "public/layout" .}}
+
+{{end}}
+
+{{define "content"}}
+
+<div id="content">
+    <el-button type="success">成功按钮1</el-button>
+</div>
+
+{{end}}
+
+{{define "script"}}
+
+<script>
+    new Vue({
+        el: '#content',
+        data: function() {
+            return { visible: false }
+        }
+    })
+</script>
+
+{{end}}

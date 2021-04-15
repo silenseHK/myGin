@@ -1,6 +1,8 @@
 package routes
 
-import "silence/controllers/admin"
+import (
+	"silence/controllers/admin"
+)
 
 type AdminRouter struct{
 
@@ -25,5 +27,6 @@ func (this AdminRouter)Register(){
 	gAdmin := g.Group("/admin")
 	gAdminAccount := gAdmin.Group("/account")
 	gAdminAccount.GET("/",AdminAdminCon.AccountList)
+	gAdminAccount.POST("/",AdminAdminCon.AccountAdd)
 
 }
