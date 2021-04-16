@@ -38,11 +38,11 @@ func (this Admin)AccountAdd(c *gin.Context){
 		return
 	}
 	fmt.Println(string(pwd))
-	data := &models.Admin{
+	data := models.Admin{
 		Account: account,
 		Password: string(pwd),
 	}
-	new(models.Models).Insert(data)
+	new(models.Models).Insert(&data)
 	c.JSON(http.StatusOK,rtn)
 }
 

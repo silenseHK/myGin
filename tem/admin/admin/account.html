@@ -34,9 +34,10 @@
                 </el-table-column>
             </el-table>
         </el-main>
+
     </el-container>
 
-    <el-dialog title="增加" :visible.sync="addDisplay1" :modal="false">
+    <el-dialog title="增加" :visible.sync="addDisplay1">
         <el-form :model="addForm">
             <el-form-item label="账号" :label-width="formLabelWidth">
                 <el-input v-model="addForm.account" autocomplete="off"></el-input>

@@ -15,7 +15,7 @@ func init(){
 	r.LoadHTMLGlob("tem/*/*/*")
 	r.Static("/asset", "./asset")
 	register()
-	r.Run()
+	r.Run(":8090")
 
 }
 

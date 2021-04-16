@@ -11,11 +11,11 @@ type ApiRouter struct{
 var (
 	apiIndexCon = new(api.Index)
 	apiGameCon = new(api.Game)
+	apiUserCon = new(api.User)
 )
 
 func (this ApiRouter)Register(){
-	g := r.Group("/api")
+	apiGroup := r.Group("/api")
 
-	g.GET("/index",apiIndexCon.Default)
-	g.GET("/index2",apiGameCon.Default)
+	apiGroup.POST("/register",apiUserCon.Register)
 }

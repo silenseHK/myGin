@@ -1,0 +1,9 @@
+host=127.0.0.1
+port=3306
+user=root
+passwor=root
+dbname=hang-up
+
+redis_host=67.229.243.37
+redis_password=goshop6666
+redis_port=6379
