@@ -9,7 +9,10 @@ import (
 var MyRedis redis.Conn
 
 const (
-	REGISTER = "HANG:REGISTER:"
+	PREFIX = "HANG:"
+	REGISTER = PREFIX + "REGISTER:"
+	REGISTER_COUNT = REGISTER + "COUNT:"
+	USER_TOKEN = PREFIX + "USERTOKEN:"
 )
 
 func init(){

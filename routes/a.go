@@ -2,6 +2,8 @@ package routes
 
 import (
 	"fmt"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,6 +14,8 @@ var routerMap []Core
 func init(){
 	fmt.Println("a.go")
 	r = gin.Default()
+	store := cookie.NewStore([]byte("hangUp"))
+	r.Use(sessions.Sessions("hangUpSession",store))
 	r.LoadHTMLGlob("tem/*/*/*")
 	r.Static("/asset", "./asset")
 	register()

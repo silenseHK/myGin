@@ -24,3 +24,7 @@ func (this UserRep)Register(valid validators.UserRegister)models.Users{
 	new(models.Models).Insert(&user)
 	return user
 }
+
+func (this UserRep)SaveUser(userData models.Users){
+	models.DB.Save(&userData)
+}

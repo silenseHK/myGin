@@ -1,10 +1,10 @@
 package api
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"silence/services/api"
+	"silence/tools"
 	"silence/validators"
 )
 
@@ -13,12 +13,12 @@ type User struct{
 }
 
 func init(){
-	userService = new(api.UserService)
+
 }
 
 var (
 	validate  = new(validators.Valid)
-	userService *api.UserService
+	userService = new(api.UserService)
 )
 
 func (this User)Get(c *gin.Context){
@@ -32,7 +32,31 @@ func (this User)Register(c *gin.Context){
 	if !validate.Validate(c, &registerRule){
 		return
 	}
-	fmt.Println(userService.GetReturn())
 	userService.Register(registerRule)
 	c.JSON(http.StatusOK,userService.GetReturn())
+}
+
+func (this User)GetVerify(c *gin.Context){
+	defer this.ReceiveErr(c)
+	var verifyRule validators.UserVerify
+	if !validate.Validate(c, &verifyRule){
+		return
+	}
+	userService.GetVerify(verifyRule)
+	c.JSON(http.StatusOK,userService.GetReturn())
+}
+
+func (this User)Login(c *gin.Context){
+	defer this.ReceiveErr(c)
+	var verifyRule validators.UserLogin
+	if !validate.Validate(c, &verifyRule){
+		return
+	}
+	userService.Login(verifyRule)
+	c.JSON(http.StatusOK,userService.GetReturn())
+}
+
+func (this User)Test(c *gin.Context){
+	verify := tools.CreateVerify(6)
+	c.JSON(http.StatusOK,verify)
 }

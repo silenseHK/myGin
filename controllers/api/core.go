@@ -22,7 +22,9 @@ func init(){
 
 func (this Core)ReceiveErr(c *gin.Context){
 	err := recover()
-	fmt.Println(err)
+	if err != nil{
+		fmt.Println(err)
+	}
 	msg := cast.ToString(err)
 	if msg != ""{
 		rtn.Code = http.StatusForbidden

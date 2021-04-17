@@ -11,6 +11,8 @@ type Models struct{
 
 var DB *gorm.DB
 
+const PREFIX = "hang_"
+
 func init(){
 	db,err := gorm.Open("mysql", "root:root@(127.0.0.1:3306)/hang-up?charset=utf8&parseTime=True&loc=Local")
 	if err != nil{
@@ -18,7 +20,7 @@ func init(){
 	}
 	db.SingularTable(true)   //设置全局表名禁用复数
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string)string{
-		return "hang_" + defaultTableName
+		return PREFIX + defaultTableName
 	}
 	DB = db
 }
