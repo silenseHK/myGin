@@ -26,6 +26,7 @@ func (this ApiRouter)Register(){
 	apiGroup.GET("/test",apiUserCon.Test)
 	apiGroup.POST("/login",apiUserCon.Login)
 
+	//充值
 	registerGroup := apiGroup.Group("/recharge", middleUserToken.CheckToken)
 	registerGroup.GET("/type",apiRecharge.TypeList)
 }
